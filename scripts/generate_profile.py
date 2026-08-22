@@ -378,11 +378,13 @@ def render_metrics(m: dict) -> str:
         ("FOLLOWERS", fmt(m.get("followers")), "TOTAL"),
     ]
     tw, th, gap = 280, 110, 16
-    w, h = tw * 3 + gap * 2, th * 2 + gap
+    top = 38
+    w, h = tw * 3 + gap * 2, th * 2 + gap + top
     parts = [svg_open(w, h)]
+    parts.append(text(2, 20, "$ ./stats --live", 12, MUT))
     for i, (label, value, sub) in enumerate(tiles):
         x = (i % 3) * (tw + gap)
-        y = (i // 3) * (th + gap)
+        y = top + (i // 3) * (th + gap)
         parts.append(f'<rect x="{x+0.5}" y="{y+0.5}" width="{tw-1}" '
                      f'height="{th-1}" fill="none" stroke="{FG}" '
                      f'stroke-opacity="0.28"/>')
@@ -403,9 +405,11 @@ def render_heatmap(days: dict[str, int]) -> str:
         cols.setdefault(sunday, {})[(d.weekday() + 1) % 7] = (iso, cnt)
     sundays = sorted(cols)
 
+    top = 32
     w = max(day_w + len(sundays) * pitch + 8, 420)
-    h = lbl_h + 7 * pitch + 12
+    h = top + lbl_h + 7 * pitch + 12
     parts = [svg_open(w, h)]
+    parts.append(text(2, 20, "$ ./heatmap --amoled", 12, MUT))
 
     if sundays:
         prev_month = None
@@ -415,7 +419,7 @@ def render_heatmap(days: dict[str, int]) -> str:
             mo = date.fromisoformat(first_iso).month if first_iso else None
             if mo and mo != prev_month:
                 prev_month = mo
-                parts.append(text(day_w + wi * pitch, 15,
+                parts.append(text(day_w + wi * pitch, top + 14,
                                   ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
                                    "JUL", "AUG", "SEP", "OCT", "NOV",
                                    "DEC"][mo - 1], 10, MUT, spacing="1"))
@@ -425,12 +429,12 @@ def render_heatmap(days: dict[str, int]) -> str:
                     continue
                 level = 0 if cnt <= 0 else min(
                     4, 1 + (cnt > 1) + (cnt >= 4) + (cnt >= 8))
-                x, y = day_w + wi * pitch, lbl_h + row * pitch
+                x, y = day_w + wi * pitch, top + lbl_h + row * pitch
                 parts.append(f'<rect x="{x}" y="{y}" width="{cell}" '
                              f'height="{cell}" rx="2" fill="{HEAT[level]}"/>')
         for ri, lbl in enumerate(["MON", "WED", "FRI"]):
-            parts.append(text(0, lbl_h + ri * 2 * pitch + cell - 1, lbl, 9,
-                              MUT))
+            parts.append(text(0, top + lbl_h + ri * 2 * pitch + cell - 1,
+                              lbl, 9, MUT))
     else:
         parts.append(text(w // 2, h // 2, "// CONTRIBUTION DATA UNAVAILABLE",
                           13, MUT, anchor="middle"))
@@ -439,9 +443,10 @@ def render_heatmap(days: dict[str, int]) -> str:
 
 
 def render_activity(series: list[int]) -> str:
-    w, h = 880, 200
-    pad_l, pad_r, pad_t, pad_b = 44, 16, 18, 30
+    w, h = 880, 230
+    pad_l, pad_r, pad_t, pad_b = 44, 16, 48, 30
     parts = [svg_open(w, h)]
+    parts.append(text(2, 20, "$ ./activity --graph", 12, MUT))
     if series:
         peak = max(max(series), 1)
         iw, ih = w - pad_l - pad_r, h - pad_t - pad_b
@@ -596,17 +601,112 @@ CONTACT_CARDS = [
 
 
 def render_contact(label: str, value: str) -> str:
-    w, h = 280, 96
+    w, h = 880, 92
     parts = [svg_open(w, h)]
     parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
                  f'fill="none" stroke="{FG}" stroke-opacity="0.3"/>')
-    parts.append(text(18, 30, label, 11, MUT, spacing="3"))
-    parts.append(f'<line x1="18" y1="42" x2="{w-18}" y2="42" stroke="{FG}" '
-                 f'stroke-opacity="0.18"/>')
-    size = 13 if len(value) <= 21 else 12
-    parts.append(text(18, 68, value, size, FG, weight="bold", spacing="0.5"))
-    parts.append(text(w - 18, 84, "-> OPEN", 9, MUT, spacing="2",
+    parts.append(text(24, 32, label, 11, MUT, spacing="3"))
+    parts.append(text(24, 66, value, 15, FG, weight="bold", spacing="0.5"))
+    parts.append(text(w - 24, 66, "-> OPEN", 11, SEC, spacing="2",
                       anchor="end"))
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+IDENTITY_ROWS = [
+    ("NAME", ["ValiantZippu"]),
+    ("ALIAS", ["Vazuppu"]),
+    ("ROLE", ["Developer / System Architect", "Musician / Designer"]),
+    ("STATUS", ["Building in public"]),
+    ("APPROACH", ["Create \u00b7 Solve \u00b7 Learn \u00b7 Repeat"]),
+]
+FOCUS_COLUMNS = [
+    ("BUILDING", ["Kaiteyo", "Isekaiyo", "Personal Tooling"]),
+    ("LEARNING", ["Java", "Rust", "TypeScript", "Kotlin", "Python", "Web"]),
+    ("EXPLORING", ["System Design", "UX / UI", "Architecture",
+                   "Design Language"]),
+]
+TOOLKIT_ROWS = [
+    ("LANGUAGES", "Rust \u00b7 TypeScript \u00b7 Java \u00b7 Kotlin \u00b7 Python"),
+    ("DEVELOPMENT", "Git \u00b7 GitHub \u00b7 Gradle \u00b7 VS Code"),
+    ("DESIGN", "Figma \u00b7 Photoshop \u00b7 Clip Studio"),
+    ("CREATIVE", "Ableton \u00b7 FL Studio \u00b7 DaVinci Resolve"),
+    ("SYSTEMS", "Linux \u00b7 Android \u00b7 Windows"),
+]
+
+
+def render_about() -> str:
+    w = 880
+    id_h = 56 + sum(len(vals) + 1 for _, vals in IDENTITY_ROWS) * 24
+    focus_h = 60 + max(len(items) for _, items in FOCUS_COLUMNS) * 24 + 28
+    h = id_h + focus_h
+    parts = [svg_open(w, h)]
+    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
+                 f'fill="none" stroke="{FG}" stroke-opacity="0.3"/>')
+    parts.append(text(24, 32, "> cat ~/identity.dat", 13, SEC))
+    parts.append(f'<line x1="24" y1="46" x2="{w-24}" y2="46" stroke="{FG}" '
+                 f'stroke-opacity="0.18"/>')
+    y = 78
+    for label, values in IDENTITY_ROWS:
+        parts.append(text(24, y, label, 12, MUT, spacing="2"))
+        for j, val in enumerate(values):
+            vx = 180 if j == 0 else 24
+            parts.append(text(vx, y + j * 24, val, 13, FG, weight="bold"))
+        y += (len(values) + 1) * 24
+    parts.append(f'<line x1="24" y1="{y - 8}" x2="{w-24}" y2="{y - 8}" '
+                 f'stroke="{FG}" stroke-opacity="0.18"/>')
+    cy = y + 28
+    col_x = [24, 330, 620]
+    for (head, items), cx in zip(FOCUS_COLUMNS, col_x):
+        parts.append(text(cx, cy, head, 13, FG, weight="bold", spacing="2"))
+        for k, item in enumerate(items):
+            parts.append(text(cx, cy + 26 + k * 24, item, 12, SEC))
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def render_toolkit() -> str:
+    w = 880
+    h = 74 + len(TOOLKIT_ROWS) * 36
+    parts = [svg_open(w, h)]
+    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
+                 f'fill="none" stroke="{FG}" stroke-opacity="0.3"/>')
+    parts.append(text(24, 32, "$ ./toolkit --inventory", 13, SEC))
+    parts.append(f'<line x1="24" y1="46" x2="{w-24}" y2="46" stroke="{FG}" '
+                 f'stroke-opacity="0.18"/>')
+    y = 80
+    for label, values in TOOLKIT_ROWS:
+        parts.append(text(24, y, label, 12, FG, weight="bold", spacing="2"))
+        parts.append(text(260, y, values, 13, SEC))
+        y += 36
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def render_footer() -> str:
+    w, h = 880, 196
+    parts = [svg_open(w, h)]
+    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
+                 f'fill="none" stroke="{FG}" stroke-opacity="0.35"/>')
+    parts.append(text(24, 36, "$ ./session.log", 13, SEC))
+    rows = [("SYSTEM STATUS", "ONLINE"), ("MODE", "BUILD"),
+            ("USER", "VALIANTZIPPU")]
+    y = 76
+    for label, value in rows:
+        parts.append(text(24, y, label, 12, MUT, spacing="1"))
+        parts.append(text(300, y, "::", 12, DIM))
+        parts.append(text(340, y, value, 13, FG, weight="bold", spacing="1"))
+        y += 26
+    parts.append(text(w // 2, h - 22, "\u00a9 2026 VALIANTZIPPU", 12, MUT,
+                      spacing="2", anchor="middle"))
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def render_label(cmd: str) -> str:
+    w, h = 880, 34
+    parts = [svg_open(w, h)]
+    parts.append(text(2, 22, cmd, 12, MUT))
     parts.append("</svg>")
     return "".join(parts)
 
@@ -660,6 +760,12 @@ def main() -> int:
         outputs[f"repo_{card['name']}.svg"] = render_repo_card(card, i)
     for label, value, _url in CONTACT_CARDS:
         outputs[f"contact_{label.lower()}.svg"] = render_contact(label, value)
+    outputs["about.svg"] = render_about()
+    outputs["toolkit.svg"] = render_toolkit()
+    outputs["footer.svg"] = render_footer()
+    outputs["label_projects.svg"] = render_label(
+        "$ ls ~/repositories --index")
+    outputs["label_contact.svg"] = render_label("$ ./contact --open")
 
     changed = sum(write_if_changed(os.path.join(OUT_DIR, name), body)
                   for name, body in outputs.items())
