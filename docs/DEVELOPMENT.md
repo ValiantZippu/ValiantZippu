@@ -47,9 +47,8 @@ permission (already set in the file).
 
 | File | Content |
 |---|---|
-| `header.svg` | Terminal boot window: identity, status line |
-| `about.svg` | `identity.dat` + BUILDING / LEARNING / EXPLORING focus columns (static config) |
-| `stats.svg` | One continuous panel: metric tiles + heatmap + weekly activity graph |
+| `top.svg` | Boot header + identity + focus columns on one open surface (static config) |
+| `stats.svg` | One continuous surface: open-typography metrics + heatmap + activity graph |
 | `detailed.svg` | Commits / PRs / issues / total contributions + ranked language bars |
 | `repo_<Name>.svg` | One clickable project card per indexed repository |
 | `toolkit.svg` | Toolkit inventory (static config) |
