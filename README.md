@@ -1,270 +1,366 @@
-<div align="center" id="top">
+<div align="center">
 
-```text
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                            ║
-║  ██╗   ██╗ █████╗ ██╗     ██╗ █████╗ ███╗   ██╗████████╗                  ║
-║  ██║   ██║██╔══██╗██║     ██║██╔══██╗████╗  ██║╚══██╔══╝                  ║
-║  ██║   ██║███████║██║     ██║███████║██╔██╗ ██║   ██║                     ║
-║  ╚██╗ ██╔╝██╔══██║██║     ██║██╔══██║██║╚██╗██║   ██║                     ║
-║   ╚████╔╝ ██║  ██║███████╗██║██║  ██║██║ ╚████║   ██║                     ║
-║    ╚═══╝  ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝                     ║
-║                                                                            ║
-║                         V A L I A N T Z I P P U                            ║
-║                                                                            ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+```text id="p4h8s2"
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ○ ○ ○    valiantzippu@github:~$ ./init_profile.sh                    [ OK ] │
+│                                                                              │
+│  ██╗   ██╗ █████╗ ██╗     ██╗ █████╗ ███╗   ██╗████████╗███████╗██████╗    │
+│  ██║   ██║██╔══██╗██║     ██║██╔══██╗████╗  ██║╚══██╔══╝██╔════╝██╔══██╗   │
+│  ██║   ██║███████║██║     ██║███████║██╔██╗ ██║   ██║   █████╗  ██████╔╝   │
+│  ╚██╗ ██╔╝██╔══██║██║     ██║██╔══██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗   │
+│   ╚████╔╝ ██║  ██║███████╗██║██║  ██║██║ ╚████║   ██║   ███████╗██║  ██║   │
+│    ╚═══╝  ╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   │
+│                                                                              │
+│                         V A L I A N T Z I P P U                              │
+│                                                                              │
+│  > SYSTEM ARCHITECT. DEVELOPER. MUSICIAN. DESIGNER.                         │
+│  > EXECUTING KAITEYO AND ISEKAIYO...                                        │
+│  > STATUS: ONLINE   │   MODE: BUILD   │   FOCUS: IMPACT                     │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-```text
-SYSTEM ARCHITECT  ·  DEVELOPER  ·  MUSICIAN  ·  DESIGNER
+<a id="top"></a>
 
-[ BUILD ]   [ LEARN ]   [ EXPLORE ]
-
-STATUS :: ONLINE
-MODE   :: BUILD
-```
-
-<br>
-
-<a href="#about">ABOUT</a>
-  ·   <a href="#projects">PROJECTS</a>
-  ·   <a href="#stats">STATS</a>
-  ·   <a href="#activity">ACTIVITY</a>
-  ·   <a href="#contact">CONTACT</a>
+`[ <a href="#about">ABOUT</a> ]`
+  
+`[ <a href="#projects">PROJECTS</a> ]`
+  
+`[ <a href="#stats">STATS</a> ]`
+  
+`[ <a href="#toolkit">TOOLKIT</a> ]`
+  
+`[ <a href="#contact">CONTACT</a> ]`
 
 </div>
 
 ---
 
-<h2 id="about">01 / ABOUT</h2>
+<a id="about"></a>
 
-```text
-┌────────────────────────────────────────────────────────────────────────────┐
-│                                                                            │
-│  $ whoami                                                                 │
-│                                                                            │
-│  ValiantZippu                                                             │
-│                                                                            │
-│  Developer · System Architect · Musician                                  │
-│                                                                            │
-│  Building software, studying systems, and turning ideas into              │
-│  things that actually exist.                                              │
-│                                                                            │
-│  CURRENTLY                                                                │
-│                                                                            │
-│  → Kaiteyo                                                                │
-│  → Isekaiyo                                                               │
-│  → System Design                                                          │
-│  → Interface / UX                                                         │
-│  → Personal Tooling                                                       │
-│                                                                            │
-└────────────────────────────────────────────────────────────────────────────┘
+## `01_ / ABOUT`
+
+```text id="6w7tq3"
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                                                                              │
+│  > identity.dat                                                             │
+│                                                                              │
+│  NAME        : ValiantZippu                                                 │
+│  ALIAS       : Vazuppu                                                      │
+│  ROLE        : Developer / System Architect                                 │
+│              : Musician / Designer                                          │
+│                                                                              │
+│  STATUS      : Building in public                                           │
+│  APPROACH    : Create · Solve · Learn · Repeat                              │
+│                                                                              │
+│  > current_focus.lst                                                        │
+│                                                                              │
+│  BUILDING                    LEARNING                  EXPLORING              │
+│  ───────────────────         ─────────────────         ─────────────────     │
+│  Kaiteyo                     Java                      System Design          │
+│  Isekaiyo                    Rust                      UX / UI                │
+│  Personal Tooling            TypeScript                Architecture           │
+│  System Architecture        Kotlin                    Design Language        │
+│                              Python                    Product Thinking       │
+│                              Web                                             │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-<div align="center">
-
-```text
-BUILDING                         LEARNING                         EXPLORING
-
-KAITEYO                          JAVA                             SYSTEM DESIGN
-ISEKAIYO                         RUST                             UX / UI
-PERSONAL TOOLING                 TYPESCRIPT                       ARCHITECTURE
-                                 KOTLIN                           DESIGN LANGUAGE
-                                 PYTHON
-                                 WEB
-```
-
-</div>
+<a href="#top">↑ back to top</a>
 
 ---
 
-<h2 id="projects">02 / PROJECTS</h2>
+<a id="projects"></a>
 
-```text
-$ ls ~/projects
+## `02_ / PROJECTS`
+
+```text id="3m5n8x"
+┌─[ VALIANTZIPPU@GITHUB ]─[ ~/projects ]───────────────────────────────────────┐
+│                                                                              │
+│  $ ls                                                                       │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-<div align="center">
+<table width="100%">
+<tr>
+
+<td width="50%" valign="top">
 
 <a href="https://github.com/ValiantZippu/Kaiteyo">
-<table>
-<tr>
-<td align="center" width="50%">
 
-### `01 / KAITEYO`
+```text id="1p7q6v"
+┌──────────────────────────────────────────────┐
+│                                              │
+│  01_ / KAITEYO                    [ ACTIVE ] │
+│                                              │
+│  Kanji learning platform                     │
+│  SRS · handwriting · study tools             │
+│                                              │
+│  KOTLIN   ANDROID   FIREBASE   ROOM          │
+│                                              │
+│  ──────────────────────────────────────────  │
+│                                              │
+│  → OPEN REPOSITORY                           │
+│                                              │
+└──────────────────────────────────────────────┘
+```
 
-`KANJI · SRS · HANDWRITING`
-
-**ACTIVE PROJECT**
-
-`→ OPEN REPOSITORY`
-
-</td>
-</tr>
-</table>
 </a>
 
-<br>
+</td>
+
+<td width="50%" valign="top">
 
 <a href="https://github.com/ValiantZippu/Isekaiyo">
-<table>
-<tr>
-<td align="center" width="50%">
 
-### `02 / ISEKAIYO`
+```text id="9t4k2a"
+┌──────────────────────────────────────────────┐
+│                                              │
+│  02_ / ISEKAIYO                   [ ACTIVE ] │
+│                                              │
+│  Application / software development          │
+│  Experiments · systems · ideas               │
+│                                              │
+│  KOTLIN   ANDROID   MVVM   ROOM              │
+│                                              │
+│  ──────────────────────────────────────────  │
+│                                              │
+│  → OPEN REPOSITORY                           │
+│                                              │
+└──────────────────────────────────────────────┘
+```
 
-`APPLICATION / SOFTWARE PROJECT`
-
-**ACTIVE PROJECT**
-
-`→ OPEN REPOSITORY`
+</a>
 
 </td>
+
 </tr>
 </table>
-</a>
-
-</div>
-
-```text
-$ ./projects --status
-
-Kaiteyo      :: ACTIVE
-Isekaiyo     :: ACTIVE
-
-2 repositories indexed
-```
-
----
-
-<h2 id="stats">03 / SYSTEM STATISTICS</h2>
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=ValiantZippu&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&bg_color=000000&title_color=ffffff&text_color=ffffff&icon_color=ffffff&custom_title=SYSTEM%20STATISTICS" width="49%"/>
+`$ ./open --repository`
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ValiantZippu&layout=compact&langs_count=10&hide_border=true&bg_color=000000&title_color=ffffff&text_color=ffffff&custom_title=LANGUAGE%20DISTRIBUTION" width="49%"/>
+**Choose a project above.**
+
+</div>
+
+<a href="#top">↑ back to top</a>
+
+---
+
+<a id="stats"></a>
+
+## `03_ / SYSTEM STATS`
+
+<div align="center">
+
+<table width="100%">
+<tr>
+
+<td width="33%" align="center">
+
+**COMMITS**
+
+```text
+LIVE
+```
+
+<img src="https://github-readme-stats.vercel.app/api?username=ValiantZippu&show_icons=true&hide_border=true&bg_color=000000&title_color=ffffff&text_color=ffffff&icon_color=ffffff&include_all_commits=true&count_private=true" width="100%"/>
+
+</td>
+
+<td width="33%" align="center">
+
+**LANGUAGES**
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ValiantZippu&layout=compact&langs_count=8&hide_border=true&bg_color=000000&title_color=ffffff&text_color=ffffff" width="100%"/>
+
+</td>
+
+<td width="33%" align="center">
+
+**STREAK**
+
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=ValiantZippu&hide_border=true&background=000000&stroke=ffffff&ring=ffffff&fire=ffffff&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ffffff&sideLabels=ffffff&dates=ffffff" width="100%"/>
+
+</td>
+
+</tr>
+</table>
+
+<br>
+
+### `> CONTRIBUTION HEATMAP`
+
+<img src="https://ghchart.rshah.org/ffffff/ValiantZippu" alt="ValiantZippu GitHub contribution heatmap" width="96%"/>
 
 <br><br>
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=ValiantZippu&hide_border=true&background=000000&stroke=ffffff&ring=ffffff&fire=ffffff&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ffffff&sideLabels=ffffff&dates=ffffff" width="85%"/>
+### `> ACTIVITY`
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=ValiantZippu&bg_color=000000&color=ffffff&line=ffffff&point=ffffff&area=true&area_color=ffffff&hide_border=true&custom_title=ACTIVITY" width="96%"/>
 
 </div>
 
 <details>
-<summary><b>▸ DEEP SYSTEM ANALYTICS</b></summary>
+<summary><code>▸ EXPAND DETAILED ANALYTICS</code></summary>
 
 <br>
 
 <div align="center">
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ValiantZippu&theme=github_dark" width="95%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ValiantZippu&theme=github_dark" width="96%"/>
 
 <br><br>
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ValiantZippu&theme=github_dark" width="49%"/>
-
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ValiantZippu&theme=github_dark" width="49%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ValiantZippu&theme=github_dark" width="48%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ValiantZippu&theme=github_dark" width="48%"/>
 
 <br><br>
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=ValiantZippu&theme=github_dark" width="49%"/>
-
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ValiantZippu&theme=github_dark&utcOffset=6" width="49%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=ValiantZippu&theme=github_dark" width="48%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ValiantZippu&theme=github_dark&utcOffset=6" width="48%"/>
 
 </div>
 
 </details>
 
+<a href="#top">↑ back to top</a>
+
 ---
 
-<h2 id="activity">04 / ACTIVITY</h2>
+<a id="toolkit"></a>
+
+## `04_ / TOOLKIT`
 
 <div align="center">
 
-```text
-CONTRIBUTION MATRIX
+```text id="4g6h9k"
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                                                                              │
+│  LANGUAGES                                                                  │
+│  ────────────────────────────────────────────────────────────────────────  │
+│  Rust · TypeScript · Java · Kotlin · Python · HTML                           │
+│                                                                              │
+│  DEVELOPMENT                                                                │
+│  ────────────────────────────────────────────────────────────────────────  │
+│  Git · GitHub · Gradle · VS Code                                             │
+│                                                                              │
+│  DESIGN                                                                     │
+│  ────────────────────────────────────────────────────────────────────────  │
+│  Figma · Photoshop · Clip Studio                                             │
+│                                                                              │
+│  CREATIVE                                                                   │
+│  ────────────────────────────────────────────────────────────────────────  │
+│  Ableton · FL Studio · DaVinci Resolve                                       │
+│                                                                              │
+│  SYSTEMS                                                                    │
+│  ────────────────────────────────────────────────────────────────────────  │
+│  Linux · Android · Windows                                                   │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
-
-<img src="https://ghchart.rshah.org/ffffff/ValiantZippu" alt="ValiantZippu GitHub contribution heatmap" width="95%"/>
-
-<br><br>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=ValiantZippu&bg_color=000000&color=ffffff&line=ffffff&point=ffffff&area=true&area_color=ffffff&hide_border=true&custom_title=ACTIVITY" width="95%"/>
 
 </div>
 
-<details>
-<summary><b>▸ TOOLCHAIN</b></summary>
-
-<br>
-
-```text
-LANGUAGES
-────────────────────────────────────────────────────────────
-Rust · TypeScript · Java · Kotlin · Python · HTML
-
-DEVELOPMENT
-────────────────────────────────────────────────────────────
-Git · GitHub · Gradle · VS Code
-
-DESIGN
-────────────────────────────────────────────────────────────
-Figma · Photoshop · Clip Studio
-
-CREATIVE
-────────────────────────────────────────────────────────────
-Ableton · FL Studio · DaVinci Resolve
-
-SYSTEMS
-────────────────────────────────────────────────────────────
-Linux · Android · Windows
-```
-
-</details>
+<a href="#top">↑ back to top</a>
 
 ---
 
-<h2 id="contact">05 / CONTACT</h2>
+<a id="contact"></a>
+
+## `05_ / CONTACT`
 
 <div align="center">
 
-```text
-┌────────────────────────────────────────────────────────────────────────────┐
-│                                                                            │
-│  $ connect                                                                │
-│                                                                            │
-│  GITHUB       github.com/ValiantZippu                                     │
-│  EMAIL        emailzippu@gmail.com                                        │
-│  PORTFOLIO    idontworkforothers.com                                      │
-│                                                                            │
-└────────────────────────────────────────────────────────────────────────────┘
-```
+<table width="100%">
+<tr>
+
+<td align="center" width="33%">
 
 <a href="https://github.com/ValiantZippu">
-<img src="https://img.shields.io/badge/GITHUB-000000?style=flat-square&logo=github&logoColor=white"/>
-</a>
-&nbsp;
-<a href="mailto:emailzippu@gmail.com">
-<img src="https://img.shields.io/badge/EMAIL-000000?style=flat-square&logo=gmail&logoColor=white"/>
-</a>
-&nbsp;
-<a href="https://idontworkforothers.com">
-<img src="https://img.shields.io/badge/PORTFOLIO-000000?style=flat-square&logo=firefox&logoColor=white"/>
-</a>
 
-<br><br>
-
-<a href="#top">↑ BACK TO TOP</a>
-
-<br><br>
-
-```text
-VALIANTZIPPU
-────────────────────────────
-ONLINE · BUILDING · 2026
+```text id="j2r5m8"
+┌────────────────────────────┐
+│                            │
+│          GITHUB            │
+│                            │
+│      /ValiantZippu         │
+│                            │
+│       → CONNECT            │
+│                            │
+└────────────────────────────┘
 ```
 
-<img src="https://komarev.com/ghpvc/?username=ValiantZippu&color=ffffff&style=flat-square&label=PROFILE_VIEWS"/>
+</a>
+
+</td>
+
+<td align="center" width="33%">
+
+<a href="mailto:emailzippu@gmail.com">
+
+```text id="c6v9q1"
+┌────────────────────────────┐
+│                            │
+│           EMAIL            │
+│                            │
+│   emailzippu@gmail.com     │
+│                            │
+│       → CONTACT            │
+│                            │
+└────────────────────────────┘
+```
+
+</a>
+
+</td>
+
+<td align="center" width="33%">
+
+<a href="https://idontworkforothers.com">
+
+```text id="n8k3s5"
+┌────────────────────────────┐
+│                            │
+│         PORTFOLIO          │
+│                            │
+│   idontworkforothers.com   │
+│                            │
+│       → ENTER              │
+│                            │
+└────────────────────────────┘
+```
+
+</a>
+
+</td>
+
+</tr>
+</table>
+
+<br>
+
+```text id="v5x2r7"
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                                                                              │
+│  $ ./session.log                                                            │
+│                                                                              │
+│  SYSTEM STATUS  ::  ONLINE                                                  │
+│  MODE            ::  BUILD                                                   │
+│  USER            ::  VALIANTZIPPU                                            │
+│                                                                              │
+│                              [ EXIT ]                                        │
+│                                                                              │
+│                         © 2026 VALIANTZIPPU                                  │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+<img src="https://komarev.com/ghpvc/?username=ValiantZippu&color=ffffff&style=flat-square&label=PROFILE_ACCESS"/>
 
 </div>
+
+<a href="#top">↑ back to top</a>
