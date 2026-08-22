@@ -49,9 +49,7 @@ permission (already set in the file).
 |---|---|
 | `header.svg` | Terminal boot window: identity, status line |
 | `about.svg` | `identity.dat` + BUILDING / LEARNING / EXPLORING focus columns (static config) |
-| `metrics.svg` | Six metric tiles (repos, stars, commits 365d, longest streak, contributions 365d, followers) |
-| `heatmap.svg` | Contribution heatmap, last 365 days, grayscale cells |
-| `activity.svg` | Weekly activity line graph, last ~52 weeks |
+| `stats.svg` | One continuous panel: metric tiles + heatmap + weekly activity graph |
 | `detailed.svg` | Commits / PRs / issues / total contributions + ranked language bars |
 | `repo_<Name>.svg` | One clickable project card per indexed repository |
 | `toolkit.svg` | Toolkit inventory (static config) |
@@ -74,6 +72,9 @@ Two cases:
 1. **Repository already exists on GitHub** — it appears automatically once it
    is among your most recently pushed non-fork repos (up to `MAX_CARDS`).
    Descriptions, language tags, stars and forks are pulled from the API.
+   **Note:** the clickable link for each card is hand-written in `README.md` —
+   if a repo lives under an organization or has a non-standard URL, update the
+   `<a href>` wrapping its card there.
 
 2. **Pin or pre-announce a repository** — add an entry to the `FEATURED` list
    at the top of `scripts/generate_profile.py`:
