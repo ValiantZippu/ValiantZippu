@@ -335,45 +335,54 @@ def text(x, y, s, size, fill=FG, *, weight="normal", spacing=None,
 # Renderers
 # --------------------------------------------------------------------------- #
 
-def render_header(metrics: dict) -> str:
-    w, h = 880, 300
-    cx = w // 2
-    parts = [svg_open(w, h)]
-    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
-                 f'fill="none" stroke="{FG}" stroke-opacity="0.35"/>')
-    parts.append(f'<line x1="0.5" y1="40" x2="{w-0.5}" y2="40" stroke="{FG}" '
-                 f'stroke-opacity="0.25"/>')
-    for i in range(3):
-        parts.append(f'<circle cx="{26 + i*22}" cy="20" r="4.5" fill="none" '
-                     f'stroke="{SEC}"/>')
-    parts.append(text(96, 25, f"{USER.lower()}@github:~$ ./init_profile.sh",
-                      13, SEC))
-    parts.append(text(w - 24, 25, "[ OK ]", 13, FG, weight="bold",
-                      anchor="end"))
+HEADER_H = 292
 
-    parts.append(text(cx, 132, "VALIANTZIPPU", 46, FG, weight="bold",
+
+def _header_body() -> str:
+    """Boot header fragment -- no frame, sits directly on the surface."""
+    cx = 440
+    parts = []
+    for i in range(3):
+        parts.append(f'<circle cx="{28 + i*22}" cy="22" r="4.5" fill="none" '
+                     f'stroke="{SEC}"/>')
+    parts.append(text(98, 27, f"{USER.lower()}@github:~$ ./init_profile.sh",
+                      13, SEC))
+    parts.append(text(852, 27, "[ OK ]", 13, FG, weight="bold",
+                      anchor="end"))
+    parts.append(text(cx, 134, "VALIANTZIPPU", 46, FG, weight="bold",
                       spacing="14", anchor="middle"))
-    parts.append(f'<line x1="{cx-190}" y1="152" x2="{cx+190}" y2="152" '
+    parts.append(f'<line x1="{cx-190}" y1="154" x2="{cx+190}" y2="154" '
                  f'stroke="{FG}" stroke-opacity="0.3"/>')
-    parts.append(text(cx, 186, "> SYSTEM ARCHITECT . DEVELOPER . MUSICIAN . "
+    parts.append(text(cx, 188, "> SYSTEM ARCHITECT . DEVELOPER . MUSICIAN . "
                       "DESIGNER", 14, SEC, spacing="1", anchor="middle"))
-    parts.append(text(cx, 212, "> EXECUTING KAITEYO AND ISEKAIYO ...", 13,
+    parts.append(text(cx, 214, "> EXECUTING KAITEYO AND ISEKAIYO ...", 13,
                       MUT, spacing="1", anchor="middle"))
-    parts.append(text(cx, 256, "STATUS : ONLINE", 13, FG, weight="bold",
+    parts.append(text(cx, 258, "STATUS : ONLINE", 13, FG, weight="bold",
                       anchor="middle"))
-    parts.append(text(cx, 276, "MODE : BUILD", 13, MUT, spacing="2",
+    parts.append(text(cx, 278, "MODE : BUILD", 13, MUT, spacing="2",
                       anchor="middle"))
+    return "".join(parts)
+
+
+def render_top() -> str:
+    """Boot header + identity + focus columns on one continuous surface."""
+    parts = [svg_open(880, HEADER_H + 26 + ABOUT_H)]
+    parts.append(_header_body())
+    parts.append(f'<line x1="28" y1="{HEADER_H + 13}" x2="852" '
+                 f'y2="{HEADER_H + 13}" stroke="{FG}" stroke-opacity="0.15"/>')
+    parts.append(f'<g transform="translate(0,{HEADER_H + 26})">'
+                 f'{_about_frag()}</g>')
     parts.append("</svg>")
     return "".join(parts)
 
 
-TILES_H = 236  # 2 rows x 110 + 16 gap
+TILES_H = 184  # 2 open typographic rows
 HEAT_H = 141   # month label row 26 + 7 rows x 15 + padding
 ACT_H = 170
 
 
 def _tiles_frag(m: dict) -> str:
-    """Metric tile grid fragment (no outer frame)."""
+    """Open-typography metric columns (no boxes). Fits in 824px."""
     streak = m.get("streak_longest")
     tiles = [
         ("REPOSITORIES", fmt(m.get("repos")), "PUBLIC"),
@@ -383,31 +392,21 @@ def _tiles_frag(m: dict) -> str:
         ("CONTRIBUTIONS", fmt(m.get("total_contribs")), "LAST 365 DAYS"),
         ("FOLLOWERS", fmt(m.get("followers")), "TOTAL"),
     ]
-    tw, th, gap = 280, 110, 16
+    cols_x = [4, 296, 588]
     parts = []
     for i, (label, value, sub) in enumerate(tiles):
-        x = (i % 3) * (tw + gap)
-        y = (i // 3) * (th + gap)
-        parts.append(f'<rect x="{x+0.5}" y="{y+0.5}" width="{tw-1}" '
-                     f'height="{th-1}" fill="none" stroke="{FG}" '
-                     f'stroke-opacity="0.28"/>')
-        parts.append(text(x + 16, y + 28, label, 11, MUT, spacing="2"))
-        parts.append(text(x + 16, y + 72, value, 32, FG, weight="bold",
+        x = cols_x[i % 3]
+        y = (i // 3) * 92
+        parts.append(text(x, y + 18, label, 11, MUT, spacing="2"))
+        parts.append(text(x, y + 60, value, 32, FG, weight="bold",
                           spacing="1"))
-        parts.append(text(x + 16, y + 95, sub, 10, MUT, spacing="2"))
-    return "".join(parts)
-
-
-def render_metrics(m: dict) -> str:
-    parts = [svg_open(872, TILES_H)]
-    parts.append(_tiles_frag(m))
-    parts.append("</svg>")
+        parts.append(text(x, y + 84, sub, 10, MUT, spacing="2"))
     return "".join(parts)
 
 
 def _heat_frag(days: dict[str, int]) -> str:
     """Contribution heatmap fragment (no outer frame)."""
-    cell, pitch, lbl_h, day_w = 12, 15, 26, 34
+    cell, pitch, lbl_h, day_w = 12, 15, 26, 30
     cols: dict[int, dict[int, tuple[str, int]]] = {}
     for iso, cnt in sorted((days or {}).items()):
         d = date.fromisoformat(iso)
@@ -456,8 +455,8 @@ def render_heatmap(days: dict[str, int]) -> str:
 
 def _act_frag(series: list[int]) -> str:
     """Weekly activity line-chart fragment (no outer frame)."""
-    w = 880
-    pad_l, pad_r, pad_t, pad_b = 44, 16, 14, 28
+    w = 824
+    pad_l, pad_r, pad_t, pad_b = 48, 4, 14, 28
     parts = []
     if series:
         peak = max(max(series), 1)
@@ -506,28 +505,26 @@ def render_stats(metrics: dict, days: dict[str, int],
          + sec_h + HEAT_H + div_h
          + sec_h + ACT_H + 14)
     parts = [svg_open(w, h)]
-    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
-                 f'fill="none" stroke="{FG}" stroke-opacity="0.3"/>')
 
     y = title_h
-    parts.append(text(24, 22, "$ ./stats --live", 12, MUT))
-    parts.append(f'<g transform="translate(24,{y})">{_tiles_frag(metrics)}</g>')
+    parts.append(text(28, 22, "$ ./stats --live", 12, MUT))
+    parts.append(f'<g transform="translate(28,{y})">{_tiles_frag(metrics)}</g>')
 
     y += TILES_H + div_h // 2
-    parts.append(f'<line x1="24" y1="{y}" x2="{w-24}" y2="{y}" '
-                 f'stroke="{FG}" stroke-opacity="0.18"/>')
+    parts.append(f'<line x1="28" y1="{y}" x2="{w-28}" y2="{y}" '
+                 f'stroke="{FG}" stroke-opacity="0.15"/>')
 
     y += div_h // 2 + sec_h
-    parts.append(text(24, y - 8, "$ ./heatmap --amoled", 12, MUT))
-    parts.append(f'<g transform="translate(24,{y})">{_heat_frag(days)}</g>')
+    parts.append(text(28, y - 8, "$ ./heatmap --amoled", 12, MUT))
+    parts.append(f'<g transform="translate(28,{y})">{_heat_frag(days)}</g>')
 
     y += HEAT_H + div_h // 2
-    parts.append(f'<line x1="24" y1="{y}" x2="{w-24}" y2="{y}" '
-                 f'stroke="{FG}" stroke-opacity="0.18"/>')
+    parts.append(f'<line x1="28" y1="{y}" x2="{w-28}" y2="{y}" '
+                 f'stroke="{FG}" stroke-opacity="0.15"/>')
 
     y += div_h // 2 + sec_h
-    parts.append(text(24, y - 8, "$ ./activity --graph", 12, MUT))
-    parts.append(f'<g transform="translate(24,{y})">{_act_frag(series)}</g>')
+    parts.append(text(28, y - 8, "$ ./activity --graph", 12, MUT))
+    parts.append(f'<g transform="translate(28,{y})">{_act_frag(series)}</g>')
 
     parts.append("</svg>")
     return "".join(parts)
@@ -613,38 +610,29 @@ def render_repo_card(card: dict, index: int) -> str:
     op = "0.55" if dimmed else None
 
     parts = [svg_open(w, h)]
-    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
-                 f'fill="none" stroke="{FG}" stroke-opacity="0.3"/>')
-    parts.append(text(24, 38, f"{num}_ / {card['name'].upper()}", 17, FG,
+    parts.append(text(28, 38, f"{num}_ / {card['name'].upper()}", 17, FG,
                       weight="bold", spacing="2", opacity=op))
-    parts.append(text(w - 24, 37, f"[ {status} ]", 12,
+    parts.append(text(w - 28, 37, f"[ {status} ]", 12,
                       SEC if dimmed else FG, weight="bold", spacing="2",
                       anchor="end"))
-    parts.append(f'<line x1="0.5" y1="54" x2="{w-0.5}" y2="54" stroke="{FG}" '
-                 f'stroke-opacity="0.18"/>')
+    parts.append(f'<line x1="28" y1="52" x2="{w-28}" y2="52" stroke="{FG}" '
+                 f'stroke-opacity="0.15"/>')
 
-    dy = 82
+    dy = 80
     for line in wrap_desc(card["desc"]):
-        parts.append(text(24, dy, line, 13, SEC, opacity=op))
+        parts.append(text(28, dy, line, 13, SEC, opacity=op))
         dy += 21
 
-    tx, ty = 24, 128
-    for tag in card["tags"]:
-        tw = int(len(tag) * 8.1) + 24
-        parts.append(f'<rect x="{tx}" y="{ty-15}" width="{tw}" height="21" '
-                     f'rx="2" fill="none" stroke="{FG}" '
-                     f'stroke-opacity="0.3"/>')
-        parts.append(text(tx + 12, ty, tag, 11, MUT, spacing="1"))
-        tx += tw + 10
+    if card["tags"]:
+        parts.append(text(28, 126, " \u00b7 ".join(card["tags"]), 11, MUT,
+                          spacing="1", opacity=op))
 
-    parts.append(f'<line x1="0.5" y1="146" x2="{w-0.5}" y2="146" '
-                 f'stroke="{FG}" stroke-opacity="0.18"/>')
     stars = fmt(card["stars"])
     forks = fmt(card["forks"])
-    parts.append(text(24, 164, f"STARS {stars}   FORKS {forks}", 11, MUT,
+    parts.append(text(28, 158, f"STARS {stars}   FORKS {forks}", 11, MUT,
                       spacing="1"))
     label = "-> TRACK REPOSITORY" if dimmed else "-> OPEN REPOSITORY"
-    parts.append(text(w - 24, 164, label, 12, FG, weight="bold", spacing="2",
+    parts.append(text(w - 28, 158, label, 12, FG, weight="bold", spacing="2",
                       anchor="end"))
     parts.append("</svg>")
     return "".join(parts)
@@ -658,13 +646,11 @@ CONTACT_CARDS = [
 
 
 def render_contact(label: str, value: str) -> str:
-    w, h = 880, 92
+    w, h = 880, 64
     parts = [svg_open(w, h)]
-    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
-                 f'fill="none" stroke="{FG}" stroke-opacity="0.3"/>')
-    parts.append(text(24, 32, label, 11, MUT, spacing="3"))
-    parts.append(text(24, 66, value, 15, FG, weight="bold", spacing="0.5"))
-    parts.append(text(w - 24, 66, "-> OPEN", 11, SEC, spacing="2",
+    parts.append(text(28, 22, label, 11, MUT, spacing="3"))
+    parts.append(text(28, 50, value, 14, FG, weight="bold", spacing="0.5"))
+    parts.append(text(w - 28, 50, "-> OPEN", 11, SEC, spacing="2",
                       anchor="end"))
     parts.append("</svg>")
     return "".join(parts)
@@ -692,33 +678,31 @@ TOOLKIT_ROWS = [
 ]
 
 
-def render_about() -> str:
-    w = 880
-    id_h = 56 + sum(len(vals) + 1 for _, vals in IDENTITY_ROWS) * 24
-    focus_h = 60 + max(len(items) for _, items in FOCUS_COLUMNS) * 24 + 28
-    h = id_h + focus_h
-    parts = [svg_open(w, h)]
-    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
-                 f'fill="none" stroke="{FG}" stroke-opacity="0.3"/>')
-    parts.append(text(24, 32, "> cat ~/identity.dat", 13, SEC))
-    parts.append(f'<line x1="24" y1="46" x2="{w-24}" y2="46" stroke="{FG}" '
-                 f'stroke-opacity="0.18"/>')
+ABOUT_H = (56 + sum(len(vals) + 1 for _, vals in IDENTITY_ROWS) * 24
+           + 60 + max(len(items) for _, items in FOCUS_COLUMNS) * 24 + 28)
+
+
+def _about_frag() -> str:
+    """Identity + focus columns fragment (no frame)."""
+    parts = []
+    parts.append(text(28, 32, "> cat ~/identity.dat", 13, SEC))
+    parts.append(f'<line x1="28" y1="46" x2="852" y2="46" stroke="{FG}" '
+                 f'stroke-opacity="0.15"/>')
     y = 78
     for label, values in IDENTITY_ROWS:
-        parts.append(text(24, y, label, 12, MUT, spacing="2"))
+        parts.append(text(28, y, label, 12, MUT, spacing="2"))
         for j, val in enumerate(values):
-            vx = 180 if j == 0 else 24
+            vx = 184 if j == 0 else 28
             parts.append(text(vx, y + j * 24, val, 13, FG, weight="bold"))
         y += (len(values) + 1) * 24
-    parts.append(f'<line x1="24" y1="{y - 8}" x2="{w-24}" y2="{y - 8}" '
-                 f'stroke="{FG}" stroke-opacity="0.18"/>')
+    parts.append(f'<line x1="28" y1="{y - 8}" x2="852" y2="{y - 8}" '
+                 f'stroke="{FG}" stroke-opacity="0.15"/>')
     cy = y + 28
-    col_x = [24, 330, 620]
+    col_x = [28, 334, 624]
     for (head, items), cx in zip(FOCUS_COLUMNS, col_x):
         parts.append(text(cx, cy, head, 13, FG, weight="bold", spacing="2"))
         for k, item in enumerate(items):
             parts.append(text(cx, cy + 26 + k * 24, item, 12, SEC))
-    parts.append("</svg>")
     return "".join(parts)
 
 
@@ -726,9 +710,7 @@ def render_toolkit() -> str:
     w = 880
     h = 74 + len(TOOLKIT_ROWS) * 36
     parts = [svg_open(w, h)]
-    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
-                 f'fill="none" stroke="{FG}" stroke-opacity="0.3"/>')
-    parts.append(text(24, 32, "$ ./toolkit --inventory", 13, SEC))
+    parts.append(text(28, 32, "$ ./toolkit --inventory", 13, SEC))
     parts.append(f'<line x1="24" y1="46" x2="{w-24}" y2="46" stroke="{FG}" '
                  f'stroke-opacity="0.18"/>')
     y = 80
@@ -743,9 +725,7 @@ def render_toolkit() -> str:
 def render_footer() -> str:
     w, h = 880, 196
     parts = [svg_open(w, h)]
-    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
-                 f'fill="none" stroke="{FG}" stroke-opacity="0.35"/>')
-    parts.append(text(24, 36, "$ ./session.log", 13, SEC))
+    parts.append(text(28, 36, "$ ./session.log", 13, SEC))
     rows = [("SYSTEM STATUS", "ONLINE"), ("MODE", "BUILD"),
             ("USER", "VALIANTZIPPU")]
     y = 76
@@ -806,7 +786,7 @@ def main() -> int:
     }
 
     outputs = {
-        "header.svg": render_header(metrics),
+        "top.svg": render_top(),
         "stats.svg": render_stats(metrics, (contrib or {}).get("days") or {},
                                   weekly_series(
                                       (contrib or {}).get("days") or {})),
@@ -816,7 +796,6 @@ def main() -> int:
         outputs[f"repo_{card['name']}.svg"] = render_repo_card(card, i)
     for label, value, _url in CONTACT_CARDS:
         outputs[f"contact_{label.lower()}.svg"] = render_contact(label, value)
-    outputs["about.svg"] = render_about()
     outputs["toolkit.svg"] = render_toolkit()
     outputs["footer.svg"] = render_footer()
     outputs["label_projects.svg"] = render_label(
