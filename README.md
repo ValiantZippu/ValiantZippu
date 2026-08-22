@@ -7,9 +7,8 @@
 <!-- ===================================================================== -->
 
 <div align="center">
-<img src="assets/generated/header.svg" width="100%" alt="valiantzippu@github:~$ ./init_profile.sh — VALIANTZIPPU — STATUS: ONLINE — MODE: BUILD"><br>
+<a id="about"></a><img src="assets/generated/top.svg" width="100%" alt="valiantzippu@github:~$ ./init_profile.sh — VALIANTZIPPU — STATUS: ONLINE — MODE: BUILD — > cat ~/identity.dat — NAME ValiantZippu, ALIAS Vazuppu, ROLE Developer / System Architect / Musician / Designer — BUILDING Kaiteyo Isekaiyo Personal Tooling — LEARNING Java Rust TypeScript Kotlin Python Web — EXPLORING System Design UX/UI Architecture Design Language"><br>
 <a href="#about">[ ABOUT ]</a> &nbsp; <a href="#projects">[ PROJECTS ]</a> &nbsp; <a href="#stats">[ STATS ]</a> &nbsp; <a href="#toolkit">[ TOOLKIT ]</a> &nbsp; <a href="#contact">[ CONTACT ]</a><br>
-<a id="about"></a><img src="assets/generated/about.svg" width="100%" alt="> cat ~/identity.dat — NAME ValiantZippu, ALIAS Vazuppu, ROLE Developer / System Architect / Musician / Designer — BUILDING Kaiteyo Isekaiyo Personal Tooling — LEARNING Java Rust TypeScript Kotlin Python Web — EXPLORING System Design UX/UI Architecture Design Language"><br>
 <a id="projects"></a><img src="assets/generated/label_projects.svg" width="100%" alt="$ ls ~/repositories --index"><br>
 <a href="https://github.com/ValiantZippu/Kaiteyo"><img src="assets/generated/repo_Kaiteyo.svg" width="100%" alt="01_ / KAITEYO — Kanji learning platform — OPEN REPOSITORY"></a><br>
 <a href="https://github.com/ValiantZippu?tab=repositories"><img src="assets/generated/repo_Isekaiyo.svg" width="100%" alt="02_ / ISEKAIYO — Interactive fiction platform — TRACK REPOSITORY"></a><br>
