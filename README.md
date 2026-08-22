@@ -1,80 +1,114 @@
-You're right. Here's your README using that generator's style:
-
----
-
-```markdown
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=VALIANT+ZIPPU;Wont+let+you+cross+me&font=Fira%20Code&center=true&width=440&height=45&color=ffffff&vCenter=true&size=22">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:333333&height=200&section=header&text=VALIANT%20ZIPPU&fontSize=60&fontColor=ffffff&animation=fadeIn" />
 </div>
 
 ---
 
-### ⚡ CURRENT FOCUS
-
-```yaml
-WORKING:   Kaiteyo, Isekaiyo
-LEARNING:  Java, Rust, TypeScript, HTML
-SEEKING:   System Design, UX, Design Language
-```
+<div align="center">
+  <i>Wont let you cross me</i>
+</div>
 
 ---
 
-### 🛠️ TOOLKIT
+<br>
 
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=figma,kotlin,photoshop,python,rust,ts" />
-</p>
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="33%">
+        <img src="https://img.shields.io/badge/-WORKING-000?style=flat-square&labelColor=000" />
+        <br>
+        <b>Kaiteyo</b>
+        <br>
+        <b>Isekaiyo</b>
+      </td>
+      <td align="center" width="33%">
+        <img src="https://img.shields.io/badge/-LEARNING-000?style=flat-square&labelColor=000" />
+        <br>
+        <b>Java · Rust</b>
+        <br>
+        <b>TypeScript · HTML</b>
+      </td>
+      <td align="center" width="33%">
+        <img src="https://img.shields.io/badge/-SEEKING-000?style=flat-square&labelColor=000" />
+        <br>
+        <b>System Design</b>
+        <br>
+        <b>UX · Design Language</b>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<br>
 
 ---
 
-### 📊 STATS
+<br>
 
-<p align="center">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=ValiantZippu&show_icons=true&theme=dark&hide_border=true" />
-  <img width="48%" src="https://github-readme-streak-stats.herokuapp.com/?user=ValiantZippu&theme=dark&hide_border=true" />
-</p>
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=figma,kotlin,photoshop,python,rust,ts&theme=dark" />
+</div>
 
-<p align="center">
-  <img width="40%" src="https://github-readme-stats.vercel.app/api/top-langs?username=ValiantZippu&layout=compact&theme=dark&hide_border=true" />
-</p>
+<br>
 
 ---
 
-### 🏆 TROPHIES
+<br>
 
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=ValiantZippu&theme=darkhub&no-frame=true&row=2&column=4" />
-</p>
+<div align="center">
+  <img width="45%" src="https://github-readme-stats.vercel.app/api?username=ValiantZippu&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=ffffff&icon_color=ffffff&text_color=888888" />
+  <img width="45%" src="https://github-readme-streak-stats.herokuapp.com/?user=ValiantZippu&theme=dark&hide_border=true&background=0d1117&stroke=ffffff&ring=ffffff&fire=ffffff&currStreakLabel=ffffff" />
+</div>
+
+<br>
+
+<div align="center">
+  <img width="40%" src="https://github-readme-stats.vercel.app/api/top-langs?username=ValiantZippu&layout=compact&theme=dark&hide_border=true&bg_color=0d1117&title_color=ffffff&text_color=888888" />
+</div>
+
+<br>
 
 ---
 
-### 📫 CONNECT
+<br>
 
-<p align="center">
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=ValiantZippu&theme=darkhub&no-frame=true&row=2&column=4&margin-w=15&margin-h=15" />
+</div>
+
+<br>
+
+---
+
+<br>
+
+<div align="center">
   <a href="https://github.com/ValiantZippu">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+    <img src="https://img.shields.io/badge/-GITHUB-000?style=for-the-badge&logo=github&logoColor=white" />
   </a>
   <a href="mailto:emailzippu@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+    <img src="https://img.shields.io/badge/-EMAIL-000?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
   <a href="https://idontworkforothers.com">
-    <img src="https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=About.me&logoColor=white" />
+    <img src="https://img.shields.io/badge/-WEBSITE-000?style=for-the-badge&logo=About.me&logoColor=white" />
   </a>
-</p>
+</div>
+
+<br>
 
 ---
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=ValiantZippu&color=white&style=flat" />
-</p>
+<br>
+
+<div align="center">
+  <img src="https://komarev.com/ghpvc/?username=ValiantZippu&color=555555&style=flat-square&label=EXISTENCE" />
+</div>
+
+<br>
 
 ---
 
-<p align="center">
-  <b>© 2026 VALIANT ZIPPU</b>
-</p>
-```
-
----
-
-This is the actual modern GitHub README style. Badges, centered layout, typing effect, clean stats. No boxes, no ASCII art.
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:333333&height=120&section=footer" />
+</div>
