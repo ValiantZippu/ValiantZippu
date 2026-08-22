@@ -48,12 +48,16 @@ permission (already set in the file).
 | File | Content |
 |---|---|
 | `header.svg` | Terminal boot window: identity, status line |
+| `about.svg` | `identity.dat` + BUILDING / LEARNING / EXPLORING focus columns (static config) |
 | `metrics.svg` | Six metric tiles (repos, stars, commits 365d, longest streak, contributions 365d, followers) |
 | `heatmap.svg` | Contribution heatmap, last 365 days, grayscale cells |
 | `activity.svg` | Weekly activity line graph, last ~52 weeks |
 | `detailed.svg` | Commits / PRs / issues / total contributions + ranked language bars |
 | `repo_<Name>.svg` | One clickable project card per indexed repository |
+| `toolkit.svg` | Toolkit inventory (static config) |
 | `contact_<label>.svg` | Clickable contact cards (GitHub / Email / Portfolio), linked in the README |
+| `footer.svg` | `session.log` closing panel (static config) |
+| `label_*.svg` | Thin command-line section labels (static) |
 
 Data sources, in priority order:
 
