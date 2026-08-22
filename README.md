@@ -1,41 +1,52 @@
 # Hi 👋, I'm Valiant Zippu
 
-### Wont let you cross me
+> *Won't let you cross me.*
 
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=ValiantZippu" alt="ValiantZippu" /></a> </p>
+---
 
-- 🔭 I'm currently working on **Kaiteyo , Isekaiyo**
+### 🚀 About Me
 
-- 🌱 I'm currently learning **Java , Rust , Typescript , HTML **
+* 🔭 **Currently working on:** `Kaiteyo` & `Isekaiyo`
+* 🌱 **Currently learning:** Java, Rust, TypeScript, and core Web Technologies
+* 👯 **Looking to collaborate on:** Kaiteyo & Isekaiyo
+* 🤝 **Seeking help with:** System Design, UX Architecture & Design Languages
+* 💬 **Ask me about:** Minor tech tweaks (otherwise, YouTube is your best teacher!)
+* ⚡ **Fun fact:** I oscillate between absolute zero cold and oddly funny.
 
-- 👯 I'm looking to collaborate on **Kaiteyo
-Isekaiyo**
+---
 
-- 🤝 I'm looking for help with **System Design , UX , Design Language **
+### 🛠️ Languages & Tools
 
-- 💬 Ask me about **Go to youtube not me , maybe can help out with minor stuff**
-
-- 📫 How to reach me **emailzippu@gmail.com**
-
-- ⚡ Fun fact **I am too cold and funny at different times**
-
-- 👨‍💻 All of my projects are available at **[https://idontworkforothers.com](https://idontworkforothers.com)**
-
-- 📝 I regularly write articles on **[https://idontworkforothers.com](https://idontworkforothers.com)**
-
-- 📄 Know about my experiences **[https://idontworkforothers.com](https://idontworkforothers.com)**
-
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://github.com/ValiantZippu" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="ValiantZippu" height="30" width="40" /></a>
+<p left="align">
+  <img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" alt="Rust" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma" />
+  <img src="https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=photoshop&logoColor=white" alt="Adobe Photoshop" />
 </p>
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://developer.mozilla.org/en-US/docs/Web/figma" target="_blank" rel="noreferrer"> <img src="https://skillicons.dev/icons?i=figma" alt="figma" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/kotlin" target="_blank" rel="noreferrer"> <img src="https://skillicons.dev/icons?i=kotlin" alt="kotlin" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/photoshop" target="_blank" rel="noreferrer"> <img src="https://skillicons.dev/icons?i=photoshop" alt="photoshop" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/python" target="_blank" rel="noreferrer"> <img src="https://skillicons.dev/icons?i=py" alt="python" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/rust" target="_blank" rel="noreferrer"> <img src="https://skillicons.dev/icons?i=rust" alt="rust" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/typescript" target="_blank" rel="noreferrer"> <img src="https://skillicons.dev/icons?i=ts" alt="typescript" width="40" height="40"/> </a></p>
+---
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=ValiantZippu&show_icons=true&locale=en&layout=compact" alt="ValiantZippu" /></p>
+### 📊 GitHub Statistics
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=ValiantZippu&show_icons=true&locale=en" alt="ValiantZippu" /></p>
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=ValiantZippu&theme=onedark" alt="Trophies" />
+</p>
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=ValiantZippu&" alt="ValiantZippu" /></p>
+<p align="center">
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=ValiantZippu&show_icons=true&theme=dark" alt="GitHub Stats" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs?username=ValiantZippu&layout=compact&theme=dark" alt="Top Languages" />
+</p>
 
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=ValiantZippu&theme=dark" alt="GitHub Streak" />
+</p>
+
+---
+
+### 🌐 Connect & Portfolios
+
+* **Personal Hub:** [idontworkforothers.com](https://idontworkforothers.com) *(Articles, Projects & Experience)*
+* **Email:** `emailzippu@gmail.com`
+* **GitHub:** [@ValiantZippu](https://github.com/ValiantZippu)
