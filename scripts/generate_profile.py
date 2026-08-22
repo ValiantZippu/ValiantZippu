@@ -367,7 +367,13 @@ def render_header(metrics: dict) -> str:
     return "".join(parts)
 
 
-def render_metrics(m: dict) -> str:
+TILES_H = 236  # 2 rows x 110 + 16 gap
+HEAT_H = 141   # month label row 26 + 7 rows x 15 + padding
+ACT_H = 170
+
+
+def _tiles_frag(m: dict) -> str:
+    """Metric tile grid fragment (no outer frame)."""
     streak = m.get("streak_longest")
     tiles = [
         ("REPOSITORIES", fmt(m.get("repos")), "PUBLIC"),
@@ -378,13 +384,10 @@ def render_metrics(m: dict) -> str:
         ("FOLLOWERS", fmt(m.get("followers")), "TOTAL"),
     ]
     tw, th, gap = 280, 110, 16
-    top = 38
-    w, h = tw * 3 + gap * 2, th * 2 + gap + top
-    parts = [svg_open(w, h)]
-    parts.append(text(2, 20, "$ ./stats --live", 12, MUT))
+    parts = []
     for i, (label, value, sub) in enumerate(tiles):
         x = (i % 3) * (tw + gap)
-        y = top + (i // 3) * (th + gap)
+        y = (i // 3) * (th + gap)
         parts.append(f'<rect x="{x+0.5}" y="{y+0.5}" width="{tw-1}" '
                      f'height="{th-1}" fill="none" stroke="{FG}" '
                      f'stroke-opacity="0.28"/>')
@@ -392,11 +395,18 @@ def render_metrics(m: dict) -> str:
         parts.append(text(x + 16, y + 72, value, 32, FG, weight="bold",
                           spacing="1"))
         parts.append(text(x + 16, y + 95, sub, 10, MUT, spacing="2"))
+    return "".join(parts)
+
+
+def render_metrics(m: dict) -> str:
+    parts = [svg_open(872, TILES_H)]
+    parts.append(_tiles_frag(m))
     parts.append("</svg>")
     return "".join(parts)
 
 
-def render_heatmap(days: dict[str, int]) -> str:
+def _heat_frag(days: dict[str, int]) -> str:
+    """Contribution heatmap fragment (no outer frame)."""
     cell, pitch, lbl_h, day_w = 12, 15, 26, 34
     cols: dict[int, dict[int, tuple[str, int]]] = {}
     for iso, cnt in sorted((days or {}).items()):
@@ -405,12 +415,7 @@ def render_heatmap(days: dict[str, int]) -> str:
         cols.setdefault(sunday, {})[(d.weekday() + 1) % 7] = (iso, cnt)
     sundays = sorted(cols)
 
-    top = 32
-    w = max(day_w + len(sundays) * pitch + 8, 420)
-    h = top + lbl_h + 7 * pitch + 12
-    parts = [svg_open(w, h)]
-    parts.append(text(2, 20, "$ ./heatmap --amoled", 12, MUT))
-
+    parts = []
     if sundays:
         prev_month = None
         for wi, sunday in enumerate(sundays):
@@ -419,7 +424,7 @@ def render_heatmap(days: dict[str, int]) -> str:
             mo = date.fromisoformat(first_iso).month if first_iso else None
             if mo and mo != prev_month:
                 prev_month = mo
-                parts.append(text(day_w + wi * pitch, top + 14,
+                parts.append(text(day_w + wi * pitch, 14,
                                   ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
                                    "JUL", "AUG", "SEP", "OCT", "NOV",
                                    "DEC"][mo - 1], 10, MUT, spacing="1"))
@@ -429,27 +434,34 @@ def render_heatmap(days: dict[str, int]) -> str:
                     continue
                 level = 0 if cnt <= 0 else min(
                     4, 1 + (cnt > 1) + (cnt >= 4) + (cnt >= 8))
-                x, y = day_w + wi * pitch, top + lbl_h + row * pitch
+                x, y = day_w + wi * pitch, lbl_h + row * pitch
                 parts.append(f'<rect x="{x}" y="{y}" width="{cell}" '
                              f'height="{cell}" rx="2" fill="{HEAT[level]}"/>')
         for ri, lbl in enumerate(["MON", "WED", "FRI"]):
-            parts.append(text(0, top + lbl_h + ri * 2 * pitch + cell - 1,
-                              lbl, 9, MUT))
+            parts.append(text(0, lbl_h + ri * 2 * pitch + cell - 1, lbl, 9,
+                              MUT))
     else:
-        parts.append(text(w // 2, h // 2, "// CONTRIBUTION DATA UNAVAILABLE",
-                          13, MUT, anchor="middle"))
+        parts.append(text(440, HEAT_H // 2,
+                          "// CONTRIBUTION DATA UNAVAILABLE", 13, MUT,
+                          anchor="middle"))
+    return "".join(parts)
+
+
+def render_heatmap(days: dict[str, int]) -> str:
+    parts = [svg_open(880, HEAT_H)]
+    parts.append(_heat_frag(days))
     parts.append("</svg>")
     return "".join(parts)
 
 
-def render_activity(series: list[int]) -> str:
-    w, h = 880, 230
-    pad_l, pad_r, pad_t, pad_b = 44, 16, 48, 30
-    parts = [svg_open(w, h)]
-    parts.append(text(2, 20, "$ ./activity --graph", 12, MUT))
+def _act_frag(series: list[int]) -> str:
+    """Weekly activity line-chart fragment (no outer frame)."""
+    w = 880
+    pad_l, pad_r, pad_t, pad_b = 44, 16, 14, 28
+    parts = []
     if series:
         peak = max(max(series), 1)
-        iw, ih = w - pad_l - pad_r, h - pad_t - pad_b
+        iw, ih = w - pad_l - pad_r, ACT_H - pad_t - pad_b
         n = len(series)
         px = lambda i: pad_l + iw * i / max(n - 1, 1)
         py = lambda v: pad_t + ih - ih * v / peak
@@ -467,11 +479,56 @@ def render_activity(series: list[int]) -> str:
             if v > 0:
                 parts.append(f'<rect x="{px(i)-2:.1f}" y="{py(v)-2:.1f}" '
                              f'width="4" height="4" fill="{SEC}"/>')
-        parts.append(text(pad_l, h - 8, "-52W", 10, MUT))
-        parts.append(text(w - pad_r, h - 8, "NOW", 10, MUT, anchor="end"))
+        parts.append(text(pad_l, ACT_H - 6, "-52W", 10, MUT))
+        parts.append(text(w - pad_r, ACT_H - 6, "NOW", 10, MUT,
+                          anchor="end"))
     else:
-        parts.append(text(w // 2, h // 2, "// ACTIVITY DATA UNAVAILABLE", 13,
+        parts.append(text(440, ACT_H // 2, "// ACTIVITY DATA UNAVAILABLE", 13,
                           MUT, anchor="middle"))
+    return "".join(parts)
+
+
+def render_activity(series: list[int]) -> str:
+    parts = [svg_open(880, ACT_H)]
+    parts.append(_act_frag(series))
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def render_stats(metrics: dict, days: dict[str, int],
+                 series: list[int]) -> str:
+    """One continuous stats panel: tiles, heatmap and activity graph."""
+    w = 880
+    title_h = 34
+    sec_h = 24   # per-section command label
+    div_h = 30   # divider zone between sections
+    h = (title_h + TILES_H + div_h
+         + sec_h + HEAT_H + div_h
+         + sec_h + ACT_H + 14)
+    parts = [svg_open(w, h)]
+    parts.append(f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" '
+                 f'fill="none" stroke="{FG}" stroke-opacity="0.3"/>')
+
+    y = title_h
+    parts.append(text(24, 22, "$ ./stats --live", 12, MUT))
+    parts.append(f'<g transform="translate(24,{y})">{_tiles_frag(metrics)}</g>')
+
+    y += TILES_H + div_h // 2
+    parts.append(f'<line x1="24" y1="{y}" x2="{w-24}" y2="{y}" '
+                 f'stroke="{FG}" stroke-opacity="0.18"/>')
+
+    y += div_h // 2 + sec_h
+    parts.append(text(24, y - 8, "$ ./heatmap --amoled", 12, MUT))
+    parts.append(f'<g transform="translate(24,{y})">{_heat_frag(days)}</g>')
+
+    y += HEAT_H + div_h // 2
+    parts.append(f'<line x1="24" y1="{y}" x2="{w-24}" y2="{y}" '
+                 f'stroke="{FG}" stroke-opacity="0.18"/>')
+
+    y += div_h // 2 + sec_h
+    parts.append(text(24, y - 8, "$ ./activity --graph", 12, MUT))
+    parts.append(f'<g transform="translate(24,{y})">{_act_frag(series)}</g>')
+
     parts.append("</svg>")
     return "".join(parts)
 
@@ -750,10 +807,9 @@ def main() -> int:
 
     outputs = {
         "header.svg": render_header(metrics),
-        "metrics.svg": render_metrics(metrics),
-        "heatmap.svg": render_heatmap((contrib or {}).get("days") or {}),
-        "activity.svg": render_activity(
-            weekly_series((contrib or {}).get("days") or {})),
+        "stats.svg": render_stats(metrics, (contrib or {}).get("days") or {},
+                                  weekly_series(
+                                      (contrib or {}).get("days") or {})),
         "detailed.svg": render_detailed(contrib, languages),
     }
     for i, card in enumerate(select_cards(repos)):
